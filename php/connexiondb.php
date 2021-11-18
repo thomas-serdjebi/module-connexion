@@ -7,6 +7,7 @@ $BDD ['host'] = "localhost" ;
 $BDD ['user'] = "root" ;
 $BDD ['pass'] = "" ;
 $BDD ['db'] = "moduleconnexion" ;
+$table = "utilisateurs";
 
 $mysqli = mysqli_connect ( $BDD ['host'], $BDD ['user'], $BDD ['pass'], $BDD ['db'] ) ;
 

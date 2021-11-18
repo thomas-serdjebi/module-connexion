@@ -94,7 +94,9 @@
     
                     if (mysqli_query($mysqli, $sql)) {
     
-                        $suscribeok = "Félicitations, vous êtes inscrit avec succès";
+                        $suscribeok = "Félicitations, vous êtes inscrit avec succès!";
+
+                        $afficherformulaire = 0;
                     }
     
 
