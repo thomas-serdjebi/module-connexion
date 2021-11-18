@@ -35,6 +35,15 @@
                     $err_login= "Le pseudo est trop long, il dépasse 12 caractères.";
                     $valid= false;
                 }
+
+                $testlogin = mysqli_query($mysqli, "SELECT * FROM utilisateurs WHERE login='".$login."'");
+
+                $mysqli_result = mysqli_num_rows($testlogin) ;
+
+                if (($mysqli_result) ==1) { //on vérifie que ce pseudo n'est pas déjà utilisé par un autre membre
+                    $err_login = "Ce pseudo est déjà utilisé.";
+                    $valid= false;
+                }
                 
 
                 if(empty($prenom)) {
@@ -68,16 +77,12 @@
                 }
 
 
-                // elseif (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM utilisateurs WHERE login='".$login."'")==1)) { //on vérifie que ce pseudo n'est pas déjà utilisé par un autre membre
-                //     $err_login = "Ce pseudo est déjà utilisé.";
-                //     $valid= false;
-                // }
 
                 if($valid) {
 
                     mysqli_select_db ($mysqli, 'moduleconnexion') ;
                     
-                    $sql = "INSERT INTO utilisateurs ( login, prenom, nom, password) VALUES ('$login', '$prenom', '$nom', '".hash('sha256', $password)."')";
+                    $sql = "INSERT INTO utilisateurs ( login, prenom, nom, password) VALUES ('$login', '$prenom', '$nom', '".md5($password)."')";
     
                     if (mysqli_query($mysqli, $sql)) {
     
@@ -114,7 +119,7 @@
         <link rel="stylesheet" href="/module-connexion/style/index.css">
         <link rel="stylesheet" href="/module-connexion/style/header.css">
         <link rel="stylesheet" href="/module-connexion/style/footer.css">
-        <title>Accueil</title>
+        <title>Inscription</title>
     </head>
 
     <body>

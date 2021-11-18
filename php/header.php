@@ -10,10 +10,10 @@
 
     <div class="headerrightbox">
 
-        <div class="lienspages"><a class="headerliens"  href="/projectpoolphp/module-connexion2/php/inscription.php">Inscription</a></div>
-        <div class="lienspages"><a class="headerliens" href="/projectpoolphp/module-connexion2/php/connexion.php">Connexion</a></div>
-        <div class="lienspages"><a class="headerliens"  href="/projectpoolphp/module-connexion2/php/profil.php">Profil</a></div>
-        <div class="lienspages"><a class="headerliens"  href="/projectpoolphp/module-connexion2/php/admin.PHP.php">Admin</a></div>
+        <div class="lienspages"><a class="headerliens"  href="/module-connexion/php/inscription.php">Inscription</a></div>
+        <div class="lienspages"><a class="headerliens" href="/module-connexion/php/connexion.php">Connexion</a></div>
+        <div class="lienspages"><a class="headerliens"  href="/module-connexion/php/profil.php">Profil</a></div>
+        <div class="lienspages"><a class="headerliens"  href="/module-connexion/php/admin.PHP.php">Admin</a></div>
 
     </div>
 
