@@ -20,6 +20,8 @@
 
                 $password = (String) trim($password);
 
+                // TEST LOGIN => CHAMP VIDE, CARACTERES, LONGUEUR, SI DEJA UTILISE ?
+
                 if(empty($login)) {
                     $err_login = "Veuillez renseigner le login !";
                     $valid= false;
@@ -27,12 +29,12 @@
                 }
 
                 elseif(!preg_match("#^[a-z0-9]+$#",$login)) {
-                    $err_login = "Le pseudo doit être renseigné uniquement en lettres minuscules, sans accents, sans caractères spéciaux.";
+                    $err_login = "Le login doit être renseigné uniquement en lettres minuscules, sans accents, sans caractères spéciaux.";
                     $valid= false;
                 }
 
                 elseif(strlen($login)>12) {             
-                    $err_login= "Le pseudo est trop long, il dépasse 12 caractères.";
+                    $err_login= "Le login est trop long, il dépasse 12 caractères.";
                     $valid= false;
                 }
 
@@ -41,9 +43,11 @@
                 $mysqli_result = mysqli_num_rows($testlogin) ;
 
                 if (($mysqli_result) ==1) { //on vérifie que ce pseudo n'est pas déjà utilisé par un autre membre
-                    $err_login = "Ce pseudo est déjà utilisé.";
+                    $err_login = "Ce login est déjà utilisé.";
                     $valid= false;
                 }
+
+                // TEST PRENOM => CHAMP VIDE, CARACTERES ?
                 
 
                 if(empty($prenom)) {
@@ -58,6 +62,8 @@
                 }
 
 
+                // TEST NOM => CHAMP VIDE, CARACTERES ?
+
 
                 if(empty($nom)) {
                     $err_nom = "Veuillez renseigner votre nom !";
@@ -69,6 +75,8 @@
                     $err_nom = "Le nom doit être renseigné uniquement en lettres minuscules et sans accents.";
                     $valid= false;
                 }
+
+                // TEST MDP => CHAMP VIDE ?
 
                 if(empty($password)) {
                     $err_password = "Veuillez renseigner votre mot de passe !";
@@ -155,6 +163,8 @@
 
                     <input type="submit" name="inscription" value="S'inscrire">
                 </form>
+
+                <!-- RAJOUTER VOUS ETES DEJA INSCRIT ICI ? CONNECTEZ VOUS -->
 
             </section>
 
