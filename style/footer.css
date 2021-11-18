@@ -1,0 +1,58 @@
+/* FOOTER STYLE */
+footer {
+    background-color:darkblue;
+    color: white;
+    width:100%;
+
+}
+.footerboxes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.footerleftboxes {
+    display: flex;
+    flex-direction:column;
+    text-align:center;
+}
+
+.footerrighttboxes {
+    display: flex;
+    flex-direction:column;
+    text-align:center;
+    justify-content: space-between;
+}
+
+.footersocialboxes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top:3%;
+}
+
+.logosocial {
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+}
+
+.logoplateforme {
+    width:100%;
+    height:auto;
+    width:70%;
+    border-radius:15%;
+    position: relative;
+    left:100px;
+}
+
+#rdvfoot {
+    position: relative;
+    left:110px;
+    margin-bottom:2%;
+
+}
+
+a {
+    color: orange;
+}
