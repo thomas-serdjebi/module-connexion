@@ -18,17 +18,17 @@
 
             <div id="rdvfoot"> Retrouvez toutes les infos sur <a href="https://laplateforme.io/">La Plateforme_</a></div>
 
-            <div><a href="https://laplateforme.io/"><img src="/projectpoolphp/module-connexion2/assets/logoplateforme" alt="logoplateforme" class="logoplateforme"></div>
+            <div><a href="https://laplateforme.io/"><img src="/module-connexion/assets/logoplateforme" alt="logoplateforme" class="logoplateforme"></div>
 
                 <div class="footersocialboxes">
 
-                    <div><a href="https://www.facebook.com/LaPlateformeIO" target="_blank"><img src="/projectpoolphp/module-connexion2/assets/logofacebook" alt="logofacebook"  class="logosocial"></a></div>
+                    <div><a href="https://www.facebook.com/LaPlateformeIO" target="_blank"><img src="/module-connexion/assets/logofacebook" alt="logofacebook"  class="logosocial"></a></div>
 
-                    <div><a href="https://www.linkedin.com/school/laplateformeio/" target="_blank"><img src="/projectpoolphp/module-connexion2/assets/logolinkedin" alt="logolinkedin" class="logosocial"></a></div>
+                    <div><a href="https://www.linkedin.com/school/laplateformeio/" target="_blank"><img src="/module-connexion/assets/logolinkedin" alt="logolinkedin" class="logosocial"></a></div>
 
-                    <div><a href="https://twitter.com/LaPlateformeIO" target="_blank"><img src="/projectpoolphp/module-connexion2/assets/logotwitter" alt="logotwitter" class="logosocial"></a></div>
+                    <div><a href="https://twitter.com/LaPlateformeIO" target="_blank"><img src="/module-connexion/assets/logotwitter" alt="logotwitter" class="logosocial"></a></div>
 
-                    <div><a href="https://www.instagram.com/LaPlateformeIO/" target="_blank"><img src="/projectpoolphp/module-connexion2/assets/logoinstagram" alt="logoinstagram" class="logosocial"></a></div>
+                    <div><a href="https://www.instagram.com/LaPlateformeIO/" target="_blank"><img src="/module-connexion/assets/logoinstagram" alt="logoinstagram" class="logosocial"></a></div>
 
                 </div>
             </div>
