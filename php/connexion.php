@@ -8,8 +8,12 @@
 
     if(isset($_POST['connexion'])){
 
+        // SECURITE //
+
         $login = mysqli_real_escape_string($mysqli,htmlspecialchars($_POST['login']));
         $password = mysqli_real_escape_string($mysqli,htmlspecialchars(md5($_POST['password'])));
+
+        // VERIF SI CHAMPS REMPLIS 
 
         if (empty($login)) {
             $err_login ="Veuillez renseigner votre login.";
@@ -18,6 +22,8 @@
         if (empty($password)) {
             $err_password = "Veuillez renseigner votre mot de passe.";
         }
+
+        // AUTHENTIFICATION
 
         else {
 
