@@ -41,6 +41,7 @@
             else {
 
                 $_SESSION['login'] = $login ;
+                header ('Location: http://localhost/module-connexion/php/profil.php' );
 
                 $resultat = "Vous êtes connecté. ";
 
