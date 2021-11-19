@@ -55,11 +55,20 @@
 
                         if (mysqli_query($mysqli, $sql)) {
 
-                            //REAFFICHAGE FORMULAIRE AVEC INFOS UPDATE
+                            //REAFFICHAGE AVEC INFOS UPDATE
+
+
                             $sql = "SELECT * FROM utilisateurs WHERE login = '$login' ";
+
+                            // exécution requete
+                        
                            $requete = mysqli_query($mysqli, $sql) ;
+                        
+                           // création du tableau associatif avec mysqli fetch array
+                        
                            $infos = mysqli_fetch_array($requete) ;
-                           $message = "Vos modifications ont été enregistrées avec succès!";
+
+                            $message = "Vos modifications ont été enregistrées avec succès!";
                         }
 
                     }
@@ -113,7 +122,7 @@
                 <form action="profil.php" method="post" id="modif_utilisateurs">
                 
                 <div><label for="login">Login</label></div>
-                <div><input type="text" name="login" placeholder="<?php echo $infos['login']; ?>"></div>
+                <div><input type="text" name="login" value="<?php echo $infos['login']; ?>"></div>
 
                 <br>
 
@@ -132,8 +141,10 @@
 
                 <br>
 
-                <div><input type="submit" name="modifier" value="modifier"></div>
+                <div><input type="submit" name="modifier" value="Enregistrer"></div>
             </section>
+
+            <button type="submit" name="déconnecter" value="Se déconnecter">Se déconnecter</button>
 
             <section class='underform'> <!-- MODIFICATIONS REUSSIES  -->
                 <div>
@@ -144,6 +155,8 @@
 
             </section>
 
+
+          
                 
 
         </main>
