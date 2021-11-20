@@ -57,7 +57,7 @@
                 }
 
                 elseif(!preg_match("#^[a-z]+$#",$prenom)) {
-                    $err_prenom = "Le prénom doit être renseigné uniquement en lettres minuscules et sans accents.";
+                    $err_prenom = "Le prénom doit être renseigné uniquement en lettres minuscules, sans accents, sans caractères spéciaux.";
                     $valid= false;
                 }
 
@@ -72,7 +72,7 @@
                 }
 
                 elseif(!preg_match("#^[a-z]+$#",$nom)) {
-                    $err_nom = "Le nom doit être renseigné uniquement en lettres minuscules et sans accents.";
+                    $err_nom = "Le nom doit être renseigné uniquement en lettres minuscules et sans accent, sans caractères spéciaux.";
                     $valid= false;
                 }
 
