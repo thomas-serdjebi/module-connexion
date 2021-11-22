@@ -29,7 +29,7 @@
                 }
 
                 elseif(!preg_match("#^[a-z0-9]+$#",$login)) {
-                    $err_login = "Le login doit être renseigné uniquement en lettres minuscules, sans accents, sans caractères spéciaux.";
+                    $err_login = "Le login doit être renseigné uniquement en lettres minuscules, ou chiffres sans accents, sans caractères spéciaux.";
                     $valid= false;
                 }
 
@@ -97,6 +97,8 @@
                         $suscribeok = "Félicitations, vous êtes inscrit avec succès!";
 
                         $afficherformulaire = 0;
+
+                        header('Location: http://localhost/module-connexion/php/connexion.php');
                     }
     
 

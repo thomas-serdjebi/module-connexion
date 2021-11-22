@@ -35,7 +35,6 @@
 
                 $resultat = "Le pseudo ou le mot de passe est incorrect.";
 
-
             }
 
             else {
@@ -89,6 +88,8 @@
     
 
             <h1>Connexion</h1>
+
+            <p> Veuillez vous connecter pour accéder aux informations de votre profil. <p>
 
             <section>
 

@@ -6,9 +6,9 @@
 
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="style/index.css">
-        <link rel="stylesheet" href="style/header.css">
-        <link rel="stylesheet" href="style/footer.css">
+        <link rel="stylesheet" href="/module-connexion/style/index.css">
+        <link rel="stylesheet" href="/module-connexion/style/header.css">
+        <link rel="stylesheet" href="/module-connexion/style/footer.css">
         <title>Accueil</title>
     </head>
 

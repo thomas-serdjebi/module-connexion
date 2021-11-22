@@ -2,25 +2,23 @@
 
     session_start();
 
-    // si l'utilisateur n'est pas connecté //
-
-    if (!isset($_SESSION['login'])) { 
-        header ("Refresh: 5; url=connexion.php");
-         // renvoie l'utilisateur automatiquement sur la page de connexion au bout de 5 secondes
+    if (!isset($_SESSION['login'])) {  
+        header ("Refresh: 1; url=connexion.php");
+        // renvoie l'utilisateur automatiquement sur la page de connexion au bout de 5 secondes
 
         $err_connexion = "Vous devez vous connecter pour accéder à l'onglet profil.";
-         //arret de l'exécution du reste de la page
+        //arret de l'exécution du reste de la page
 
         exit(0);
-    }
 
-    $login = $_SESSION['login']  ; // simplification session login
+
+    }
 
     include_once('connexiondb.php') ;
 
     // requete sql selection de l'utilisateur
 
-    $sql = "SELECT * FROM utilisateurs WHERE login = '$login' ";
+    $sql = "SELECT * FROM utilisateurs WHERE login = '".$_SESSION['login']."' ";
 
     // exécution requete
 
@@ -37,14 +35,10 @@
 
    if (isset($_POST['modifier'])) {
 
+        $login= $_POST["login"];
         $prenom = $_POST['prenom'];
         $nom = $_POST['nom'];
         $password = $_POST['password'];
-
-        $login = (String) trim($login);
-        $prenom = (String) trim($prenom);
-        $nom = (String) trim($nom);
-        $password = (String) trim($password);
 
         $testlogin = mysqli_query($mysqli, "SELECT * FROM utilisateurs WHERE login='".$login."'");
 
@@ -52,15 +46,10 @@
 
         // TEST LOGIN => CARACTERES, LONGUEUR, SI DEJA UTILISE ?
 
-        if(empty($login)) {
-            $err_login = "Veuillez renseigner le login !";
-            $valid= false;
 
-        }
-
-        if (isset($login)) {
+        if (!empty($login)) {
             if(!preg_match("#^[a-z0-9]+$#",$login)) {
-            $err_login = "Le login doit être renseigné uniquement en lettres minuscules, sans accents, sans caractères spéciaux.";
+            $err_login = "Le login doit être renseigné uniquement en lettres minuscules, ou chiffres sans accents, sans caractères spéciaux.";
             $valid= false;
             }
 
@@ -76,7 +65,7 @@
         }
 
         // TEST PRENOM => CHAMP VIDE, CARACTERES ?
-        if (isset($prenom)) {
+        if (!empty($prenom)) {
             if(!preg_match("#^[a-z]+$#",$prenom)) {
                 $err_prenom = "Le prénom doit être renseigné uniquement en lettres minuscules et sans accents.";
                 $valid= false;
@@ -85,7 +74,7 @@
         
         // TEST NOM => CHAMP VIDE, CARACTERES ?
 
-        if (isset($nom)) {
+        if (!empty($nom)) {
             if(!preg_match("#^[a-z]+$#",$nom)) {
             $err_nom = "Le nom doit être renseigné uniquement en lettres minuscules et sans accents.";
             $valid= false;
@@ -138,7 +127,16 @@
         }
     }
 
+    if (isset($_POST['deconnexion'])) {
+
+        session_destroy();
+
+        header('Location: http://localhost/module-connexion/php/connexion.php');
+
+        
+    }
 }
+
 
     
 
@@ -166,18 +164,7 @@
 
             <h1>Profil</h1>
 
-            <!-- <section>
-                <div> Pour modifier vos informations, <a href="http://localhost/module-connexion/php/profil.php?modifier">Cliquez ici </a>
-                    <br>
-                </div>
 
-                <div> Pour supprimer votre compte, <a href="http://localhost/module-connexion/php/profil.php?supprimer">Cliquez ici </a>
-                    <br>
-                </div>
-
-                <div> Pour vous déconnecter, <a href="http://localhost/module-connexion/php/deconnexion.php">Cliquez ici</a>
-
-            </section> -->
 
 
             <section>
@@ -187,7 +174,7 @@
                 <form action="profil.php" method="post" id="modif_utilisateurs">
                 
                 <div><label for="login">Login</label></div>
-                <div><input type="text" name="login" value="<?php echo $infos['login']; ?>"></div>
+                <div><input type="text" name="login" placeholder="<?php echo $infos['login']; ?>"></div>
 
                 <br>
 
@@ -202,14 +189,15 @@
                 <br>
 
                 <div><label for="login">Password</label></div>
-                <div><input type="password" name="password" value="<?php $infos['password']; ?>"></div>
+                <div><input type="password" name="password" value="<?php md5($infos['password']); ?>"></div>
 
                 <br>
 
                 <div><input type="submit" name="modifier" value="Enregistrer"></div>
             </section>
 
-            <button type="submit" name="déconnecter" value="Se déconnecter">Se déconnecter</button>
+            <button type="submit" name="deconnexion" value="Se déconnecter">Se déconnecter</button>
+
 
             <section class='underform'> <!-- MODIFICATIONS REUSSIES  -->
                 <div>
@@ -229,6 +217,8 @@
                 </div>
 
             </section>
+
+           
 
 
           
