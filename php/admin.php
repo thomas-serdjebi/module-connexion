@@ -1,6 +1,8 @@
 <?php
 
-session_start()
+session_start();
+
+
 
 ?>
 
@@ -36,6 +38,8 @@ session_start()
                     echo $err_admin ;
 
                 }
+
+                
 
                 else {
 
@@ -74,11 +78,25 @@ session_start()
                      
                 }
 
+                
+                    if (isset($_POST['deconnexion'])) {
+
+                        session_destroy();
+
+                        header('Location: http://localhost/module-connexion/php/connexion.php');
+
+                        
+                    }
+
 
 
             ?>
 
             </section>
+
+            <form action='admin.php' method="post">
+            <button type="submit" name="deconnexion" value="Se déconnecter">Se déconnecter</button>
+            </form>
 
 
         </main>

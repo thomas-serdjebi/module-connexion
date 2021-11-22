@@ -16,6 +16,8 @@
 
     include_once('connexiondb.php') ;
 
+    $afficherformulaire = 1 ;
+
     // requete sql selection de l'utilisateur
 
     $sql = "SELECT * FROM utilisateurs WHERE login = '".$_SESSION['login']."' ";
@@ -123,6 +125,8 @@
                $infos = mysqli_fetch_array($requete) ;
 
                 $message = "Vos modifications ont été enregistrées avec succès!";
+
+                $afficherformulaire = 0;
             }
         }
     }
@@ -169,6 +173,8 @@
 
             <section>
 
+                <?php if ($afficherformulaire ==1 ) { ?>
+
                 
     
                 <form action="profil.php" method="post" id="modif_utilisateurs">
@@ -188,7 +194,7 @@
 
                 <br>
 
-                <div><label for="login">Password</label></div>
+                <div><label for="password">Password</label></div>
                 <div><input type="password" name="password" value="<?php md5($infos['password']); ?>"></div>
 
                 <br>
@@ -196,38 +202,30 @@
                 <div><input type="submit" name="modifier" value="Enregistrer"></div>
             </section>
 
-            <button type="submit" name="deconnexion" value="Se déconnecter">Se déconnecter</button>
+            
+
+            <?php } ?>
 
 
             <section class='underform'> <!-- MODIFICATIONS REUSSIES  -->
-                <div>
-                    <?php 
-                        if (isset($message)) { echo $message ;} 
-                    ?>
-                </div>
+
+                <div><?php if (isset($message)) { echo $message ;} ?></div>
+
+                <button type="submit" name="deconnexion" value="Se déconnecter">Se déconnecter</button>
+
+                
                 <div><?php if (isset($err_login)) { echo $err_login ;}?></div>
                 <div><?php if (isset($err_prenom)) { echo $err_prenom ;} ?></div>
                 <div><?php if (isset($err_nom)) { echo $err_nom ;} ?></div>
                 <div><?php if (isset($err_password)) { echo $err_password;}?></div>
                         
                         
-                        
-                        
-                    
-                </div>
+                
 
             </section>
 
-           
-
-
-          
-                
-
         </main>
 
-
-            
         <?php require('footer.php'); ?> <!--LINK VERS LE FOOTER -->
 
 
