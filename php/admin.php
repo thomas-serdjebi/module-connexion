@@ -55,6 +55,7 @@ session_start();
                     <th>id</th>
                     <th>login</th>
                     <th>prénom</th>
+                    <th>nom</th>
                     <th>password</th>
                     </tr>
                     </thead>";
@@ -63,6 +64,7 @@ session_start();
                         echo "<tbody>";
                         echo "<tr>";
                         echo "<td>" . $row['id'] . "</td>";
+                        echo "<td>" . $row['login'] . "</td>";
                         echo "<td>" . $row['prenom'] . "</td>";
                         echo "<td>" . $row['nom'] . "</td>";
                         echo "<td>" . md5($row['password']) . "</td>";

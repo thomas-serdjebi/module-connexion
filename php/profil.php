@@ -30,118 +30,117 @@
 
    $infos = mysqli_fetch_array($requete) ;
 
-   if(!empty($_POST)) {
-    extract($_POST);
-    $valid =(boolean) true;
+    if(!empty($_POST)) {
+       extract($_POST);
+       $valid =(boolean) true;
    
 
-   if (isset($_POST['modifier'])) {
+        if (isset($_POST['modifier'])) {
 
-        $login= $_POST["login"];
-        $prenom = $_POST['prenom'];
-        $nom = $_POST['nom'];
-        $password = $_POST['password'];
+            $login= $_POST["login"];
+            $prenom = $_POST['prenom'];
+            $nom = $_POST['nom'];
+            $password = $_POST['password'];
 
-        $testlogin = mysqli_query($mysqli, "SELECT * FROM utilisateurs WHERE login='".$login."'");
+            $testlogin = mysqli_query($mysqli, "SELECT * FROM utilisateurs WHERE login='".$login."'");
 
-        $mysqli_result = mysqli_num_rows($testlogin) ;
+            $mysqli_result = mysqli_num_rows($testlogin) ;
 
-        // TEST LOGIN => CARACTERES, LONGUEUR, SI DEJA UTILISE ?
+            // TEST LOGIN => CARACTERES, LONGUEUR, SI DEJA UTILISE ?
 
+            if ($login != $_SESSION['login']) { 
 
-        if (!empty($login)) {
-            if(!preg_match("#^[a-z0-9]+$#",$login)) {
-            $err_login = "Le login doit être renseigné uniquement en lettres minuscules, ou chiffres sans accents, sans caractères spéciaux.";
-            $valid= false;
+                if (($mysqli_result) ==1) { //on vérifie que ce pseudo n'est pas déjà utilisé par un autre membre
+                    $err_login = "Ce login est déjà utilisé.";
+                    $valid= false;
+                }
             }
 
-            elseif(strlen($login)>12) {             
-                $err_login= "Le login est trop long, il dépasse 12 caractères.";
+
+            if (!empty($login)) {
+                if(!preg_match("#^[a-z0-9]+$#",$login)) {
+                $err_login = "Le login doit être renseigné uniquement en lettres minuscules, ou chiffres sans accents, sans caractères spéciaux.";
                 $valid= false;
+                }
+
+                elseif(strlen($login)>12) {             
+                    $err_login= "Le login est trop long, il dépasse 12 caractères.";
+                    $valid= false;
+                }
+
+                // elseif 
+                // }
             }
 
-            elseif (($mysqli_result) ==1) { //on vérifie que ce pseudo n'est pas déjà utilisé par un autre membre
-                $err_login = "Ce login est déjà utilisé.";
-                $valid= false;
+            // TEST PRENOM => CHAMP VIDE, CARACTERES ?
+            if (!empty($prenom)) {
+                if(!preg_match("#^[a-z]+$#",$prenom)) {
+                    $err_prenom = "Le prénom doit être renseigné uniquement en lettres minuscules et sans accents.";
+                    $valid= false;
+                }
             }
-        }
+            
+            // TEST NOM => CHAMP VIDE, CARACTERES ?
 
-        // TEST PRENOM => CHAMP VIDE, CARACTERES ?
-        if (!empty($prenom)) {
-            if(!preg_match("#^[a-z]+$#",$prenom)) {
-                $err_prenom = "Le prénom doit être renseigné uniquement en lettres minuscules et sans accents.";
+            if (!empty($nom)) {
+                if(!preg_match("#^[a-z]+$#",$nom)) {
+                $err_nom = "Le nom doit être renseigné uniquement en lettres minuscules et sans accents.";
                 $valid= false;
+                }
             }
-        }
+
+            // TEST SI MDP VIDE
+
+            if (empty($password)) {
+                $err_password = "Veuillez renseigner votre mot de passe.";
+            }
+
+            // TEST CONFIRMATION MODIFICATIONS AVEC MDP
+
+            $requetemdp = mysqli_query($mysqli, "SELECT * FROM utilisateurs WHERE password = '".$password."'") ;
+
+            $mysqli_result = mysqli_num_rows($requetemdp);
+
+            if ($mysqli_result == 0) {
+
+                $err_password = "Le mot de passe est incorrect.";
+                $valid = false;
+
+            }
+
+
+
+            if($valid) {
+
+                mysqli_select_db ($mysqli, 'moduleconnexion') ;
+
+                // REQUETE MODIFICATION PAR CHAMP
+
+                $sqllogin = "UPDATE utilisateurs SET login ='".$login."' WHERE login='".$login."'";
+                $sqlprenom = "UPDATE utilisateurs SET prenom ='".$prenom."' WHERE login='".$login."'";
+                $sqlnom = "UPDATE utilisateurs SET nom ='".$nom."' WHERE login='".$login."'";
+
+                if (mysqli_query($mysqli, $sqllogin) || mysqli_query($mysqli, $sqlprenom) || mysqli_query($mysqli, $sqlnom) ) {
         
-        // TEST NOM => CHAMP VIDE, CARACTERES ?
+                    $message = "Vos modifications ont été enregistrées avec succès!";
 
-        if (!empty($nom)) {
-            if(!preg_match("#^[a-z]+$#",$nom)) {
-            $err_nom = "Le nom doit être renseigné uniquement en lettres minuscules et sans accents.";
-            $valid= false;
+                    $afficherformulaire = 0;
+
+                    
+
+                }
             }
         }
-
-        // TEST MDP => CHAMP VIDE ?
-
-        if(empty($password)) {
-        $err_password = "Veuillez renseigner votre mot de passe !";
-        $valid= false;
-        }
-
-
-
-        if($valid) {
-
-            mysqli_select_db ($mysqli, 'moduleconnexion') ;
-
-            // REQUETE MODIFICATION 
-
-            $sql = "UPDATE utilisateurs SET 
-            login ='".$login."',
-            prenom = '".$prenom."',
-            nom = '".$nom."',
-            password = '".$password."'
-            WHERE login='".$login."'";
-
-            if (mysqli_query($mysqli, $sql)) {
     
-                $suscribeok = "Vos modifications ont été enregistrées avec succès!";
 
-                $afficherformulaire = 0;
+    
+        if (isset($_POST['deconnexion'])) {
 
-                //REAFFICHAGE AVEC INFOS UPDATE
+            session_destroy();
 
-
-                $sql = "SELECT * FROM utilisateurs WHERE login = '$login' ";
-
-                // exécution requete
-            
-               $requete = mysqli_query($mysqli, $sql) ;
-            
-               // création du tableau associatif avec mysqli fetch array
-            
-               $infos = mysqli_fetch_array($requete) ;
-
-                $message = "Vos modifications ont été enregistrées avec succès!";
-
-                $afficherformulaire = 0;
-            }
+            header('Location: http://localhost/module-connexion/php/connexion.php');
         }
     }
-
-    if (isset($_POST['deconnexion'])) {
-
-        session_destroy();
-
-        header('Location: http://localhost/module-connexion/php/connexion.php');
-
-        
-    }
-}
-
-
     
 
 ?>
@@ -180,7 +179,7 @@
                 <form action="profil.php" method="post" id="modif_utilisateurs">
                 
                 <div><label for="login">Login</label></div>
-                <div><input type="text" name="login" placeholder="<?php echo $infos['login']; ?>"></div>
+                <div><input type="text" name="login" value="<?php echo $infos['login']; ?>"></div>
 
                 <br>
 
@@ -194,8 +193,8 @@
 
                 <br>
 
-                <div><label for="password">Password</label></div>
-                <div><input type="password" name="password" value="<?php md5($infos['password']); ?>"></div>
+                <div><label for="password">Saisissez votre mot de passe pour confirmer vos modifications.</label></div>
+                <div><input type="password" name="password" placeholder="password"></div>
 
                 <br>
 
