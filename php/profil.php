@@ -54,6 +54,12 @@
 
         // TEST LOGIN => CARACTERES, LONGUEUR, SI DEJA UTILISE ?
 
+        if(empty($login)) {
+            
+            $err_login = "Veuillez renseigner votre login.";
+            $valid=false;
+        }
+
         if ($login != $_SESSION['login']) { 
 
             if (($mysqli_resultlogin) ==1) { //on vérifie que ce pseudo n'est pas déjà utilisé par un autre membre
@@ -62,11 +68,7 @@
             }
         }
 
-        if(empty($login)) {
-            
-            $err_login = "Veuillez renseigner votre login.";
-            $valid=false;
-        }
+
 
 
         elseif (!preg_match("#^[a-z0-9]+$#",$login)) {

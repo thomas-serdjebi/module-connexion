@@ -146,9 +146,24 @@
 
             <h1>Inscription</h1>
 
-            <section>
+            <section class="formulaire">
+
+                <div class="reglesform">
+                    <div id="renseignez"> Veuillez renseigner vos informations ci dessous.</br></div>
+                    Le login doit être renseigné uniquement en lettres minuscules, 
+                    ou chiffres sans accents, sans caractères spéciaux, 
+                    et ne doit pas dépasser 25 caractères. Les noms et prénoms 
+                    doivent également être renseignés uniquement en lettres miniscules et 
+                    sans caractères spéciaux.
+                </div>
+
+
+
+
+
 
                 <?php 
+                    if (isset($err_connexion)) { echo $err_connexion;}
                     if ($afficherformulaire == 1) { 
                 ?>
 

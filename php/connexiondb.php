@@ -12,11 +12,8 @@ $table = "utilisateurs";
 $mysqli = mysqli_connect ( $BDD ['host'], $BDD ['user'], $BDD ['pass'], $BDD ['db'] ) ;
 
 if (!$mysqli) {
-    echo "La connexion à la base de données '".$BDD['db']."' a échoué ";
+    $err_connexion = "La connexion à la base de données '".$BDD['db']."' a échoué ";
 }
-
-else  echo "Connecté à la base de données '".$BDD['db']."'." ;
-
 
 
 

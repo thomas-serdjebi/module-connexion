@@ -2,8 +2,6 @@
 
 session_start();
 
-var_dump($_SESSION['login']);
-
 
 
 ?>
@@ -33,15 +31,17 @@ var_dump($_SESSION['login']);
 
             <?php
 
-                if ($_SESSION['login'] != 'admin') {
-
-                    $err_admin = "Seul l'administrateur du site peut accéder à cette page." ;
-
-                    echo $err_admin ;
-
+                if (!isset($_SESSION['login']))  {
+                    $err_admin="Seul l'administrateur peut accéder à cette page.";
                 }
 
-                elseif ($_SESSION['login'] == 'admin') {
+                elseif (!isset($_SESSION['login'])) {
+
+                    $err_admin = "Seul l'administrateur du site peut accéder à cette page.";
+                
+                }
+
+                elseif (($_SESSION['login']) == 'admin') {
 
                     include_once('connexiondb.php');
 
@@ -71,6 +71,8 @@ var_dump($_SESSION['login']);
                         echo "</tr>";
                         echo "</tbody>";
                     }
+
+
                     echo "</table>";
 
                     mysqli_close($mysqli);
@@ -80,15 +82,21 @@ var_dump($_SESSION['login']);
                      
                 }
 
+
+
+
+
+                if (isset($_POST['deconnexion'])) {
+
+                    session_destroy();
+
+                    header('Location: http://localhost/module-connexion/php/connexion.php');
+
+                    
+                }
+
                 
-                    if (isset($_POST['deconnexion'])) {
-
-                        session_destroy();
-
-                        header('Location: http://localhost/module-connexion/php/connexion.php');
-
-                        
-                    }
+                   
 
 
 
@@ -96,6 +104,12 @@ var_dump($_SESSION['login']);
 
             </section>
 
+            <section>
+                <?php if (isset($err_admin)) { echo $err_admin ;}
+                ?>
+            
+            
+            
             <form action='admin.php' method="post">
             <button type="submit" name="deconnexion" value="Se déconnecter">Se déconnecter</button>
             </form>
