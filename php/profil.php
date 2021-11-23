@@ -48,7 +48,7 @@
         $nom = $_POST['nom'];
         $valid1 =(boolean) true;
 
-        $testlogin = mysqli_query($mysqli, "SELECT * FROM utilisateurs WHERE login='".$login."'");
+        $testlogin = mysqli_query($mysqli, "SELECT * FROM utilisateurs WHERE login='".$login."'"); //
 
         $mysqli_resultlogin = mysqli_num_rows($testlogin) ;
 
@@ -69,8 +69,8 @@
             $valid1= false;
             }
 
-            elseif(strlen($login)>12) {             
-                $err_login= "Le login est trop long, il dépasse 12 caractères.";
+            elseif(strlen($login)>25) {             
+                $err_login= "Le login est trop long, il dépasse 25 caractères.";
                 $valid1= false;
             }
         }
@@ -120,7 +120,7 @@
 
 
 
-        else {
+        if($valid1) {
 
             mysqli_select_db ($mysqli, 'moduleconnexion') ;
 

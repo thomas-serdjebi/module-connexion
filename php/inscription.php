@@ -33,8 +33,8 @@
                     $valid= false;
                 }
 
-                elseif(strlen($login)>12) {             
-                    $err_login= "Le login est trop long, il dépasse 12 caractères.";
+                elseif(strlen($login)>25) {             
+                    $err_login= "Le login est trop long, il dépasse 25 caractères.";
                     $valid= false;
                 }
 
