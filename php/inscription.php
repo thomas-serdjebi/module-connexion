@@ -128,7 +128,7 @@
 
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="/module-connexion/style/index.css">
+        <link rel="stylesheet" href="/module-connexion/style/inscription.css">
         <link rel="stylesheet" href="/module-connexion/style/header.css">
         <link rel="stylesheet" href="/module-connexion/style/footer.css">
         <title>Inscription</title>
@@ -149,24 +149,25 @@
             <section>
 
                 <?php 
-                    if ($afficherformulaire == 1) { ?>
+                    if ($afficherformulaire == 1) { 
+                ?>
 
-                <form method="post" action="inscription.php">
-                    <div>
-                        <input type="text" name="login" placeholder="login">
-                    </div>
-                    <div>
-                        <input type="text" name="prenom" placeholder="prenom">
-                    </div>
-                    <div>
-                        <input type="text" name="nom" placeholder="nom">
-                    </div>
-                    <div>
-                        <input type="password" name="password" placeholder="password">
-                    </div>
+                        <form method="post" action="inscription.php" class="styleform">
+                            <div>
+                                <input type="text" name="login" placeholder="login" class="inputbasic">
+                            </div>
+                            <div>
+                                <input type="text" name="prenom" placeholder="prenom" class="inputbasic">
+                            </div>
+                            <div>
+                                <input type="text" name="nom" placeholder="nom" class="inputbasic">
+                            </div>
+                            <div>
+                                <input type="password" name="password" placeholder="password" class="inputbasic">
+                            </div>
 
-                    <input type="submit" name="inscription" value="S'inscrire">
-                </form>
+                            <input type="submit" name="inscription" value="S'inscrire" class="inputbasic">
+                        </form>
 
                 <!-- RAJOUTER VOUS ETES DEJA INSCRIT ICI ? CONNECTEZ VOUS -->
 

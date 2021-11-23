@@ -1,0 +1,47 @@
+/* FONTS*/
+
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@600&family=Fredericka+the+Great&family=Padauk&family=Rajdhani:wght@300&display=swap');
+
+/* CSS MAIN INDEX */
+
+main {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    font-size: 150%;
+    background-color:rgba(250, 250, 250, 0.85);
+    padding-bottom:8%;
+    
+}
+
+
+h1 {
+    text-align: center;
+    font-size: 135%;
+    display: flex;
+    color: rgb(55, 182, 152);
+    font-family: 'Exo 2';
+    
+}
+
+
+.styleforme input{
+    display: block;
+    margin-bottom: 10px;
+}
+
+.inputbasic {
+    border: 1px solid grey;
+    border-radius: 3px;
+    padding: 3px;
+
+}
+
+.indexparagraphes {
+    display: flex;
+    flex-direction: column;
+    color:darkblue;
+    font-family: 'Rajdhani';
+    font-weight:600;
+}
+
