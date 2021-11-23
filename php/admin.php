@@ -2,6 +2,8 @@
 
 session_start();
 
+var_dump($_SESSION['login']);
+
 
 
 ?>
@@ -31,7 +33,7 @@ session_start();
 
             <?php
 
-                if (!isset ($_SESSION['login']) == 'admin') {
+                if ($_SESSION['login'] != 'admin') {
 
                     $err_admin = "Seul l'administrateur du site peut accéder à cette page." ;
 
@@ -39,9 +41,7 @@ session_start();
 
                 }
 
-                
-
-                else {
+                elseif ($_SESSION['login'] == 'admin') {
 
                     include_once('connexiondb.php');
 

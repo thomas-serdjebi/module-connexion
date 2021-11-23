@@ -46,21 +46,10 @@
 
                 $afficherformulaire = 0;
 
-            } 
-
-
-           
+            }  
         }
 
-
-    
     }
-
-
-
-
-
-
 
 ?>
 
