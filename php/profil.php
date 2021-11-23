@@ -62,34 +62,46 @@
             }
         }
 
+        if(empty($login)) {
+            
+            $err_login = "Veuillez renseigner votre login.";
+            $valid=false;
+        }
 
-        if (!empty($login)) {
-            if(!preg_match("#^[a-z0-9]+$#",$login)) {
+
+        elseif (!preg_match("#^[a-z0-9]+$#",$login)) {
             $err_login = "Le login doit être renseigné uniquement en lettres minuscules, ou chiffres sans accents, sans caractères spéciaux.";
             $valid1= false;
-            }
+        }
 
-            elseif(strlen($login)>25) {             
-                $err_login= "Le login est trop long, il dépasse 25 caractères.";
-                $valid1= false;
-            }
+        elseif(strlen($login)>25) {             
+            $err_login= "Le login est trop long, il dépasse 25 caractères.";
+            $valid1= false;
         }
 
         // TEST PRENOM => CHAMP VIDE, CARACTERES ?
-        if (!empty($prenom)) {
-            if(!preg_match("#^[a-z]+$#",$prenom)) {
-                $err_prenom = "Le prénom doit être renseigné uniquement en lettres minuscules et sans accents.";
-                $valid1= false;
-            }
+        if (empty($prenom)) {
+
+            $err_prenom = "Veuillez renseigner votre prénom";
+            $valid=false;
+            
+        }
+
+        elseif(!preg_match("#^[a-z]+$#",$prenom)) {
+            $err_prenom = "Le prénom doit être renseigné uniquement en lettres minuscules et sans accents.";
+            $valid1= false;
         }
         
         // TEST NOM => CHAMP VIDE, CARACTERES ?
 
-        if (!empty($nom)) {
-            if(!preg_match("#^[a-z]+$#",$nom)) {
+        if (empty($nom)) {
+            $err_nom = "Veuillez renseigner votre nom";
+        }
+
+        elseif(!preg_match("#^[a-z]+$#",$nom)) {
             $err_nom = "Le nom doit être renseigné uniquement en lettres minuscules et sans accents.";
             $valid1= false;
-            }
+            
         }
 
         // TESTS DU MDP SI VIDE PUIS SI CORRECT POUR CONFIRMATION
@@ -97,8 +109,6 @@
         $requetemdp = mysqli_query($mysqli, "SELECT * FROM utilisateurs WHERE password = '".md5($_POST['password'])."'") ; // REQUETE SQL SI MDP OK
 
         $mysqli_resultmdp = mysqli_num_rows($requetemdp);  // COMPTE LE NOMBRE DE LIGNES CORRESPONDANTES
-
-        var_dump($mysqli_resultmdp);
 
         // TEST SI VIDE
 
@@ -138,6 +148,7 @@
 
             }
         }
+    
     }
 
 
