@@ -158,7 +158,7 @@
             $newpassword = $_POST['newpassword'];
             $confirmpassword = $_POST['confirmpassword'];
 
-            $requete = mysqli_query($mysqli, "SELECT * FROM utilisateurs WHERE password = '".$actualpassword."'") ; // REQUETE TEST MDP ACTUEL
+            $requete = mysqli_query($mysqli, "SELECT * FROM utilisateurs WHERE password = '".md5($actualpassword)."'") ; // REQUETE TEST MDP ACTUEL
 
 
             $mysqli_result = mysqli_num_rows($requete); // comptage des ligne de résultat de requete
@@ -195,7 +195,7 @@
 
             else {
                 
-                $modifmdp = mysqli_query($mysqli, "UPDATE utilisateur SET password = '".$_POST['newpassword']."'");
+                $modifmdp = mysqli_query($mysqli, "UPDATE utilisateurs SET password = '".md5($newpassword)."'");
 
     
                 $message = "Votre mot de passe a été modifié avec succès !";
