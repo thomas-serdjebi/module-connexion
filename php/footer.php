@@ -10,7 +10,7 @@
             <div> Thomas Serdjebi </div>
             <div> Etudiant à l'école du numérique La Plateforme_ </div>
             <div><a href="mailto:thomas.serdjebi@laplateforme.io" class="lienfooter"> Thomas.serdjebi@laplateforme.io </a></div>
-            <div> Retrouvez le projet sur mon<a class="lienfooter" href="https://github.com/thomas-serdjebi/module-connexion">GitHub</a></div>
+            <div> Retrouvez le projet sur mon <a class="lienfooter" href="https://github.com/thomas-serdjebi/module-connexion">GitHub</a>.</div>
 
         </div>
 

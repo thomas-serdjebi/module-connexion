@@ -24,24 +24,21 @@
 
             <div class="indexcontent">
                 <div class="indextitres">
-                    <h2> Bienvenue sur le projet </h2>
-                    <h1> MODULE CONNEXION </h1>
+                    <h1> ART CONNEXION </h1>
                 </div>
 
 
                 <div class="indexparagraphes">
-                    <p> Ce site WEB est conçu dans le cadre du projet "MODULE CONNEXION",
-                        à concevoir dans le cadre de la formation de Développeur Web & Web Mobile,
-                        de l'école du digital La Plateforme_.
-                    </p>
+                    <p> 
+                        Vous souhaitez faire partie d'une communauté artistique du web ?
+                    <p>
 
-                    <p> Sur ce site Web vous pourrez :
-                        <ul>
-                            <li> Créer un compte dans l'onglet inscription. </li>
-                            <li> Accéder à votre compte lorsque celui ci sera créé dans l'onglet connexion. </li>
-                            <li> Modifier votre profil au besoin dans l'onglet profil.</li>
-                            <li> Accéder à l'ensemble des informations utilisateurs pour l'administrateur dans l'onglet admin.</li>
-                        </ul>
+                    <p>N'attendez plus et inscrivez vous !</p></br>
+                    <p>
+                        Créez un compte dans l'onglet <a class="bodyliens" href="/module-connexion/php/inscription.php">Inscription</a>.</br>
+                        Accédez à votre compte dans l'onglet connexion <a class="bodyliens" href="/module-connexion/php/inscription.php">Connexion</a>.</br>
+                        Modifiez votre profil au besoin dans l'onglet <a class="bodyliens" href="/module-connexion/php/inscription.php">Profil</a>.</br>
+                        Si vous êtes administrateur, accédez à l'ensemble des informations utilisateurs dans l'onglet <a class="bodyliens" href="/module-connexion/php/admin.php">Admin</a>.</br>
                     </p>
                 </div>
 

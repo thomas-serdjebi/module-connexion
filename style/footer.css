@@ -1,20 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@100&family=Fredericka+the+Great&family=Padauk&family=Rajdhani:wght@300&display=swap');
+
 /* FOOTER STYLE */
 footer {
     background-color:darkblue;
     color: white;
     width:100%;
+    padding-top: 2%;
+    padding-bottom:20px;
+    margin-bottom:0;
+    
 
 }
 .footerboxes {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    font-family: 'Padauk';
+    
 }
 
 .footerleftboxes {
     display: flex;
     flex-direction:column;
     text-align:center;
+    padding-top: 1%;
+    font-size:105%;
+
+    
 }
 
 .footerrighttboxes {
@@ -22,6 +34,7 @@ footer {
     flex-direction:column;
     text-align:center;
     justify-content: space-between;
+  
 }
 
 .footersocialboxes {
