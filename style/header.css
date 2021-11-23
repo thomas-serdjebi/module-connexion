@@ -1,14 +1,9 @@
 /* HEADER STYLE */
 
-body {
-    margin: 0;
 
-}
 header {
     width:100%;
-    background-image:url(../assets/headerbackground1.jpg);
-    border-bottom:darkblue 2px solid;
-    background-size:cover;
+    background-color:darkblue;
 }
 
 .headerbigbox {
@@ -67,7 +62,15 @@ header {
 body {
     background-image: url(../assets/mainback.jpg);
     background-size:cover;
+    margin: 0;
     
+}
+    
+
+a {
+    color: rgba(70, 227, 190, 1);
+
+
 }
 
 

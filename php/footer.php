@@ -9,16 +9,16 @@
             <div> Ce site Web a été conçu par : </div>
             <div> Thomas Serdjebi </div>
             <div> Etudiant à l'école du numérique La Plateforme_ </div>
-            <div><a href="mailto:thomas.serdjebi@laplateforme.io"> Thomas.serdjebi@laplateforme.io </a></div>
-            <div> Retrouvez le projet sur mon<a href="https://github.com/thomas-serdjebi/module-connexion">GitHub</a></div>
+            <div><a href="mailto:thomas.serdjebi@laplateforme.io" class="lienfooter"> Thomas.serdjebi@laplateforme.io </a></div>
+            <div> Retrouvez le projet sur mon<a class="lienfooter" href="https://github.com/thomas-serdjebi/module-connexion">GitHub</a></div>
 
         </div>
 
         <div class="footerrightboxes">
 
-            <div id="rdvfoot"> Retrouvez toutes les infos sur <a href="https://laplateforme.io/">La Plateforme_</a></div>
+            <div id="rdvfoot"> Retrouvez toutes les infos sur <a href="https://laplateforme.io/" target="_blank" class="lienfooter">La Plateforme_</a></div>
 
-            <div><a href="https://laplateforme.io/"><img src="/module-connexion/assets/logoplateforme" alt="logoplateforme" class="logoplateforme"></div>
+            <div><a href="https://laplateforme.io/" class="lienfooter"><img src="/module-connexion/assets/logoplateforme" alt="logoplateforme" class="logoplateforme"></div>
 
                 <div class="footersocialboxes">
 

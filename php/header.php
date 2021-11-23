@@ -4,7 +4,7 @@
 
         <div class=headerleftbox">
 
-            <div><a href="/module-connexion/index.php"><img src="/module-connexion/assets/logo.png" alt="logo" class="logoprojet"></a></div>
+            <div><a href="/module-connexion/index.php"><img src="/module-connexion/assets/logoart.png" alt="logo" class="logoprojet"></a></div>
 
         </div>
 
