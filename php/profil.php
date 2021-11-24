@@ -14,6 +14,7 @@
 
     }
 
+
     if (isset($_POST['deconnexion'])) {
 
         session_destroy();
@@ -57,7 +58,7 @@
         if(empty($login)) {
             
             $err_login = "Veuillez renseigner votre login.";
-            $valid=false;
+            $valid1=false;
         }
 
         if ($login != $_SESSION['login']) { 
@@ -146,6 +147,7 @@
 
                 $formulaireinfos = 0;
 
+
                 
 
             }
@@ -165,7 +167,8 @@
     if(isset($_POST['modifiermdp1'])) {
             $valid2 =(boolean) true; // PERMET DE LANCER LA MODIF
 
-            $formulairemdp = 1 ; // AFFICHE FORMULAIRE MDP
+
+            $formulairemdp = 1;
             $formulaireinfos = 0; //CACHE FORMULAIRE INFO
             $actualpassword = $_POST['actualpassword'];
             $newpassword = $_POST['newpassword'];
@@ -178,51 +181,50 @@
 
             if(empty($actualpassword)) {
 
-                $err_password = "Veuillez renseigner votre mot de passe actuel.";
+                $err_actualpassword = "Veuillez renseigner votre mot de passe actuel.";
                 $valid2 = false;
             }
 
-            elseif ($mysqli_result == 0) {
+            if ($mysqli_result == 0) {
 
-                $err_password = "Le mot de passe actuel est incorrect.";
+                $err_actualpassword = "Le mot de passe actuel est incorrect.";
                 $valid2 = false;
             }
 
 
-            elseif(empty($newpassword)) {
+            if(empty($newpassword)) {
 
-                $err_password = "Veuillez renseigner votre nouveau mot de passe.";
+                $err_newpassword = "Veuillez renseigner votre nouveau mot de passe.";
                 $valid2 = false;
             }
 
-            elseif(empty($confirmpassword)) {
+            if(empty($confirmpassword)) {
 
-                $err_password = "Veuillez confirmer votre nouveau mot de passe.";
+                $err_confirmpassword = "Veuillez confirmer votre nouveau mot de passe.";
                 $valid2 = false;
+            }
+
+            elseif($newpassword != $confirmpassword) {
+
+                $err_2password = "Les nouveaux mot de passes ne correspondent pas. Veuillez réessayer.";
+                $valid2 = false;      
+
+
             }
             
-            elseif ($newpassword != $confirmpassword) {
-                $err_password = "Les nouveaux mot de passes ne correspondent pas. Veuillez réessayer.";
-                $valid2 = false;      
-            }
 
-            else {
+            if($valid2) {
                 
                 $modifmdp = mysqli_query($mysqli, "UPDATE utilisateurs SET password = '".md5($newpassword)."'");
 
     
-                $message = "Votre mot de passe a été modifié avec succès !";
+                $messagemdp = "Votre mot de passe a été modifié avec succès !";
                     
                 $formulaireinfos == 0;
+                
                     
             }
             
-        
-
-            
-            
-
-        
 
             
     } 
@@ -233,7 +235,7 @@
 
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="/module-connexion/style/index.css">
+        <link rel="stylesheet" href="/module-connexion/style/mainforms.css">
         <link rel="stylesheet" href="/module-connexion/style/header.css">
         <link rel="stylesheet" href="/module-connexion/style/footer.css">
         <title>Profil</title>
@@ -249,92 +251,109 @@
 
     
 
-            <h1>Profil</h1>
-
-
-
+            <h1><?php echo $_SESSION['login']?>,<br> bienvenue sur ton profil.</h1>
 
             <section>
 
                 <?php if ($formulaireinfos ==1 ) { ?>
 
-                <form action="profil.php" method="post" id="modif_utilisateurs">
+                <div class="reglesform">Si tu souhaites modifier les informations de ton profil ça se passe juste ci-dessous !</div>
+
+                <form action="profil.php" method="post" id="modif_utilisateurs" class="styleform">
                 
                 <div><label for="login">Login</label></div>
-                <br>
-                <div><input type="text" name="login" value="<?php echo $infos['login']; ?>"></div>
+                <div class="underform"><?php if (isset($err_login)) { echo $err_login ;}?></div><br>
+                <div><input type="text" name="login" class="inputbasic" value="<?php echo $infos['login']; ?>"></div>
 
-                <br>
                 <br>
 
                 <div><label for="prenom">Prénom</label></div>
-                <br>
-                <div><input type="text" name="prenom" value="<?php echo $infos['prenom']; ?>"></div>
+                <div class="underform"><?php if (isset($err_prenom)) { echo $err_prenom ;} ?></div><br>
+                <div><input type="text" name="prenom" class="inputbasic" value="<?php echo $infos['prenom']; ?>"></div>
 
-                <br>
                 <br>
 
                 <div><label for="nom">Nom</label></div>
+                <div class="underform"><?php if (isset($err_nom)) { echo $err_nom ;} ?></div><br>
+                <div><input type="text" name="nom" class="inputbasic" value="<?php echo $infos['nom']; ?>"></div>
+
                 <br>
-                <div><input type="text" name="nom" value="<?php echo $infos['nom']; ?>"></div>
+
+                <div><label for="password">Confirmez vos modifications avec votre mot de passe.</label></div>
+                <div class="underform"><?php if (isset($err_password)) { echo $err_password;}?></div><br>
+                <div><input type="password" name="password" placeholder="password" class="inputbasic"></div>
 
                 <br>
                 <br>
 
-                <div><label for="password">Saisissez votre mot de passe pour confirmer vos modifications.</label></div>
-                <br>
-                <div><input type="password" name="password" placeholder="password"></div>
+                <div><input type="submit" name="modifiermdp" value="Modifier le mot de passe" class="inputbasic"></div>
+                
 
-                <br>
-                <br>
+                <div><input type="submit" name="modifier" value="Enregistrer" class="inputbasic"></div>
 
-                <div><input type="submit" name="modifier" value="Enregistrer"></div>
+                <div><input type="submit" name="deconnexion" value="Se déconnecter" class="inputbasic"></div><br>
+
+
 
                 </form>
+
+                <?php } ?>
             </section>
 
             <section>
+
+                
                 <form action="profil.php" method='post'>
-                <div><input type="submit" name="modifiermdp" value="modifiermdp"></div>
+                <div class="underform"><?php if (isset($message)) {echo $message ;?></div></br>
+                <div><input type="submit" name="deconnexion" value="Se déconnecter" class="inputbasic"></div><br>
+                </form>
+                
+                <?php } ?>
+                   
+                
                 </form>
             </section>
 
-            <?php } ?>
+
+            <div class="underform"><?php if (isset($messagemdp)) {echo $messagemdp ;} ?></div>
+
+            
 
             <?php if ($formulairemdp == 1) {
                 ?>
-                <form action="profil.php" method='post'>
-                    <div><label for="actualpassword">Mot de passe actuel</label></div>
-                    <div><input type="password" name="actualpassword" placeholder ="password"></div>
+                <form action="profil.php" method='post' class="styleform">
+                    <div class="underform"><?php if (isset($err_actualpassword)) { echo $err_actualpassword;}?></div>
+                    <div><input type="password" class="inputbasic" name="actualpassword" placeholder ="mot de passe actuel"></div>
 
-                    <div><label for="newpassword">Nouveau mot de passe</label></div>
-                    <div><input type="password" name="newpassword" placeholder ="nouveau mot de passe"></div>
+                    <br>
+                    <br>
 
-                    <div><label for="confirmpassword">Confirmez le nouveau mot de passe</label></div>
-                    <div><input type="password" name="confirmpassword" placeholder="confirmer mot de passe"></div>
+                    <div class="underform"><?php if (isset($err_newpassword)) { echo $err_newpassword;}?></div>
+                    <div><input type="password" class="inputbasic" name="newpassword" placeholder ="nouveau mot de passe"></div>
 
-                    <div><input type="submit" name="modifiermdp1" value="Enregistrer"></div>
+                    <br>
+                    <br>
+
+                    <div class="underform"><?php if (isset($err_confirmpassword)) { echo $err_confirmpassword;}?></div>
+                    <div><input type="password" class="inputbasic" name="confirmpassword" placeholder="confirmer mot de passe"></div>
+
+                    <br>
+                    <div class="underform"><?php if (isset($err_2password)) { echo $err_2password;}?></div>
+                    <br>
+
+                    <div><input type="submit" name="modifiermdp1" value="Enregistrer" class="inputbasic"></div>
+
+                    <div><input type="submit" name="profilback" value="Retour sur le profil" class="inputbasic"></div><br>
+
+                    <div><input type="submit" name="deconnexion" value="Se déconnecter" class="inputbasic"></div>
                 </form>
-                <?php
-            } ?>
+            <?php } ?>
+                
+>
+                
+  
 
-            <section class='underform'> <!-- MODIFICATIONS REUSSIES  -->
 
-                <div><?php if (isset($message)) { echo $message ;} ?></div>
-                <div><?php if (isset($err_login)) { echo $err_login ;}?></div>
-                <div><?php if (isset($err_prenom)) { echo $err_prenom ;} ?></div>
-                <div><?php if (isset($err_nom)) { echo $err_nom ;} ?></div>
-                <div><?php if (isset($err_password)) { echo $err_password;}?></div>
-
-                <div>
-                    <form action="profil.php" method="post">
-
-                    <div><input type="submit" name="deconnexion" value="Se déconnecter"></div>
-                    
-                    </form>
-              </div>
-
-            </section>
 
         </main>
 

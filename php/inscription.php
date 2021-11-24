@@ -128,7 +128,7 @@
 
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="/module-connexion/style/inscription.css">
+        <link rel="stylesheet" href="/module-connexion/style/mainforms.css">
         <link rel="stylesheet" href="/module-connexion/style/header.css">
         <link rel="stylesheet" href="/module-connexion/style/footer.css">
         <title>Inscription</title>
@@ -168,18 +168,18 @@
                 ?>
 
                         <form method="post" action="inscription.php" class="styleform">
-                            <div>
-                                <input type="text" name="login" placeholder="login" class="inputbasic">
-                            </div>
-                            <div>
-                                <input type="text" name="prenom" placeholder="prenom" class="inputbasic">
-                            </div>
-                            <div>
-                                <input type="text" name="nom" placeholder="nom" class="inputbasic">
-                            </div>
-                            <div>
-                                <input type="password" name="password" placeholder="password" class="inputbasic">
-                            </div>
+                                <div class="underform"><?php if(isset($err_login)) {echo $err_login ;}?></div>
+                                <div><input type="text" name="login" placeholder="login" class="inputbasic"></div>
+
+                                <div class="underform"><?php if(isset($err_prenom)) {echo $err_prenom ;}?></div>
+                                <div><input type="text" name="prenom" placeholder="prenom" class="inputbasic"><div>
+                           
+                                <div class="underform"><?php if(isset($err_nom)) {echo $err_nom ;}?></div>
+                                <div><input type="text" name="nom" placeholder="nom" class="inputbasic"></div>
+                            
+                                <div class="underform"><?php if(isset($err_password)) {echo $err_password ;}?></div>
+                                <div><input type="password" name="password" placeholder="password" class="inputbasic"></div>
+                            
 
                             <input type="submit" name="inscription" value="S'inscrire" class="inputbasic">
                         </form>
@@ -202,18 +202,14 @@
                 </div>
 
             </section>
+                
 
-            <section class="underform"> <!-- ERREUR CAR CHAMP MANQUANTS -->
-                <div><?php if(isset($err_login)) {echo $err_login ;}?></div>
+                
 
-                <div><?php if(isset($err_prenom)) {echo $err_prenom ;}?></div>
 
-                <div><?php if(isset($err_nom)) {echo $err_nom ;}?></div>
+                
 
-                <div><?php if(isset($err_password)) {echo $err_password ;}?></div>
-
-            </section>
-
+            
            
 
 

@@ -60,7 +60,7 @@
 
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="/module-connexion/style/index.css">
+        <link rel="stylesheet" href="/module-connexion/style/inscription.css">
         <link rel="stylesheet" href="/module-connexion/style/header.css">
         <link rel="stylesheet" href="/module-connexion/style/footer.css">
         <title>Connexion</title>
@@ -78,21 +78,21 @@
 
             <h1>Connexion</h1>
 
-            <p> Veuillez vous connecter pour accéder aux informations de votre profil. <p>
+            <div class="reglesform"> Veuillez vous connecter pour accéder aux informations de votre profil. </div>
 
             <section>
 
                 <?php if($afficherformulaire == 1) { ?>
 
-                    <form method="post">
+                    <form method="post" action="connexion.php" class="styleform">
                         <div>
-                            <input type="text" name="login" placeholder="login">
+                            <input type="text" name="login" placeholder="login" class="inputbasic">
                         </div>
                         <div>
-                            <input type="password" name="password" placeholder="password">
+                            <input type="password" name="password" placeholder="password" class="inputbasic">
                         </div>
 
-                        <input type="submit" name="connexion" value="Connexion">
+                        <input type="submit" name="connexion" value="Connexion" class="inputbasic">
                     </form>
                 <?php } ?>
 

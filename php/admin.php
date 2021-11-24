@@ -10,7 +10,7 @@ session_start();
 
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="/module-connexion/style/index.css">
+        <link rel="stylesheet" href="/module-connexion/style/mainforms.css">
         <link rel="stylesheet" href="/module-connexion/style/header.css">
         <link rel="stylesheet" href="/module-connexion/style/footer.css">
         <title>Admin</title>
@@ -110,8 +110,8 @@ session_start();
             
             
             
-            <form action='admin.php' method="post">
-            <button type="submit" name="deconnexion" value="Se déconnecter">Se déconnecter</button>
+            <form action='admin.php' method="post" form="styleform">
+            <button type="submit" name="deconnexion" value="Se déconnecter" class="inputbasic">Se déconnecter</button>
             </form>
 
 

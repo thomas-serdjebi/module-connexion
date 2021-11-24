@@ -1,0 +1,125 @@
+/* FONTS*/
+
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@600&family=Fredericka+the+Great&family=Padauk&family=Rajdhani:wght@300&display=swap');
+
+/* CSS MAIN INDEX */
+
+main {
+    width: 80%;
+    margin: auto;
+    border :darkblue 1px solid;
+    font-size: 120%;
+    background-color:rgba(227, 237, 255, 0.247);
+    padding-bottom:8%;
+    text-align: center;
+    
+}
+
+
+h1 {
+    text-align: center;
+    font-size: 300%;
+    color:darkblue;
+    font-family: 'Exo 2';
+    margin: auto;
+    margin-top:20px;
+    margin-bottom:50px;
+    
+    
+}
+
+.reglesform {
+    font-family:'Exo 2';
+    font-weight: 800;
+    color:darkblue;
+    margin: auto;
+    max-width:100%;
+    height:auto;
+    width:50%;
+    text-align:center;
+    margin-bottom:40px;
+    font-size:22px;
+    
+
+}
+
+#renseignez {
+    margin:auto;
+    text-align:center;
+    
+
+
+}
+
+.styleform {
+    margin-bottom:5%;
+
+    
+}
+
+.styleform input{
+    display: block;
+    margin-bottom: 10px;
+    text-align: center;
+    margin:auto;
+    margin-top:5px;
+    margin-bottom:5px;
+    width:30%;
+    height:6%;
+   
+}
+
+.inputbasic {
+    border: 1px solid grey;
+    border-radius: 3px;
+    padding: 3px;
+    transition: all 0.5s ease ;
+    font-family:'Exo 2';
+    font-weight: 600;
+    font-size:18px;
+
+}
+
+.inputbasic:focus {
+    background-color:rgba(70, 227, 190);
+    
+}
+
+.styleform input[type=submit]{
+    background-color: white;
+    border: 1px solid darkblue;
+    padding:4px;
+    color: darkblue;
+    transition: all 0.5s ease;
+
+} 
+
+.styleform input[type=submit]:hover{
+    background-color:darkblue;
+    color:white;
+
+} 
+
+
+.indexparagraphes {
+    display: flex;
+    flex-direction: column;
+    color:darkblue;
+    font-family: 'Rajdhani';
+    font-weight:600;
+}
+
+.underform {
+    color: rgb(250, 160, 24);
+    font-weight:600;
+    font-family: 'Exo 2';
+    font-size:23px;
+}
+
+
+label {
+    border-radius: 3px;
+    font-family:'Exo 2';
+    font-weight: 600;
+    font-size:22px;
+}
