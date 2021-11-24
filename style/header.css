@@ -20,22 +20,25 @@ header {
 
 .headerrightbox {
     display: flex;
-    flex-direction: column;
-    position: absolute;
+    flex-direction: row;
+    position: relative;
     justify-content: space-around;
-    right:5%;
-    padding-top:1.5%;
+    left:5%;
+    height:auto;
+    width:80%;
+    padding-top:7.5%;
+
     
 }
 
-.lienspages {
-    margin-bottom: 20%;
-}
+
 
 .headerliens {
     text-decoration: none;
     color: rgba(70, 227, 190, 1);
-    font-size: 130%;
+    font-size: 230%;
+
+
 }
 
 

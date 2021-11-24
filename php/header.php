@@ -1,4 +1,6 @@
 
+
+
 <header>
     <div class="headerbigbox">
 
@@ -10,6 +12,7 @@
 
         <div class="headerrightbox">
 
+            <div class="lienspages"><a class="headerliens"  href="/module-connexion/index.php">Accueil</a></div>
             <div class="lienspages"><a class="headerliens"  href="/module-connexion/php/inscription.php">Inscription</a></div>
             <div class="lienspages"><a class="headerliens" href="/module-connexion/php/connexion.php">Connexion</a></div>
             <div class="lienspages"><a class="headerliens"  href="/module-connexion/php/profil.php">Profil</a></div>
@@ -20,3 +23,4 @@
     </div>
 
 </header>
+

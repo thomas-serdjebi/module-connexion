@@ -96,7 +96,6 @@
     
                         $suscribeok = "Félicitations, vous êtes inscrit avec succès!";
 
-                        $afficherformulaire = 0;
 
                         header('Location: http://localhost/module-connexion/php/connexion.php');
                     }
@@ -181,10 +180,18 @@
                                 <div><input type="password" name="password" placeholder="password" class="inputbasic"></div>
                             
 
-                            <input type="submit" name="inscription" value="S'inscrire" class="inputbasic">
+                                <input type="submit" name="inscription" value="S'inscrire" class="inputbasic">
+                                <br>
+
+                                <div class="reglesform"> Déjà inscrit ? Connectez vous ci dessous !<br>
+                                <a href="/module-connexion/php/connexion.php"><input type="button" class="inputbasic" value="Connexion"></a>
+                                </div>
+
+                            
                         </form>
 
-                <!-- RAJOUTER VOUS ETES DEJA INSCRIT ICI ? CONNECTEZ VOUS -->
+                       
+
 
             </section>
 

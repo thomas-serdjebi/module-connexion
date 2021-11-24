@@ -4,28 +4,29 @@
 
     require('connexiondb.php');
 
-    $afficherformulaire = 1;
-
+    
     if(isset($_POST['connexion'])){
 
         // SECURITE //
 
         $login = mysqli_real_escape_string($mysqli,htmlspecialchars($_POST['login']));
         $password = mysqli_real_escape_string($mysqli,htmlspecialchars(md5($_POST['password'])));
-
+        
         // VERIF SI CHAMPS REMPLIS 
 
-        if (empty($login)) {
+        if (null ==! $login) {
             $err_login ="Veuillez renseigner votre login.";
+            $validation = false;
         }
 
-        if (empty($password)) {
+        if (null ==! (md5($password))) {
             $err_password = "Veuillez renseigner votre mot de passe.";
+            $validation = false;
         }
 
         // AUTHENTIFICATION
 
-        else {
+        if(isset($login) && isset($password)) {
 
             $requete = mysqli_query($mysqli, "SELECT * FROM utilisateurs WHERE login = '".$login."' AND password = '".$password."'") ;
 
@@ -45,7 +46,7 @@
 
                 $afficherformulaire = 0;
 
-                if ($login ="admin") {
+                if (($_SESSION['login']) == 'admin' ) {
 
                     header ('Location: http://localhost/module-connexion/php/admin.php' );
 
@@ -75,7 +76,7 @@
 
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="/module-connexion/style/inscription.css">
+        <link rel="stylesheet" href="/module-connexion/style/mainforms.css">
         <link rel="stylesheet" href="/module-connexion/style/header.css">
         <link rel="stylesheet" href="/module-connexion/style/footer.css">
         <title>Connexion</title>
@@ -97,19 +98,24 @@
 
             <section>
 
-                <?php if($afficherformulaire == 1) { ?>
-
                     <form method="post" action="connexion.php" class="styleform">
-                        <div>
-                            <input type="text" name="login" placeholder="login" class="inputbasic">
-                        </div>
-                        <div>
-                            <input type="password" name="password" placeholder="password" class="inputbasic">
+                            <div class='underform'><?php if(isset($err_login)) { echo $err_login ; } ?></div>
+                            <div><input type="text" name="login" placeholder="login" class="inputbasic"></div>
+                        
+                            <div class='underform'><?php if(isset($err_password)) { echo $err_password ; } ?></div>
+                            <div><input type="password" name="password" placeholder="password" class="inputbasic"></div>
                         </div>
 
                         <input type="submit" name="connexion" value="Connexion" class="inputbasic">
+
+                        <br>
+
+                        <div class="reglesform"> Nouveau ici ? Inscrivez vous ci dessous !<br>
+                        <a href="/module-connexion/php/inscription.php"><input type="button" class="inputbasic" value="Inscription"></a>
+                        </div>
+
                     </form>
-                <?php } ?>
+
 
 
             </section>
@@ -117,11 +123,13 @@
             <section class="underform">
  
                 <div><?php if(isset($resultat)) { echo $resultat ; } ?></div>
-                <div><?php if(isset($err_login)) { echo $err_login ; } ?></div>
-                <div><?php if(isset($err_password)) { echo $err_password ; } ?></div>
+                
+                
                  
             </section>
             <!-- RAJOUTER VOUS ETES NOUVEAU ICI ? SINSCRIRE -->
+
+
 
   
 

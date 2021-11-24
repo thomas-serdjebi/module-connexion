@@ -9,7 +9,7 @@ main {
     margin: auto;
     border :darkblue 1px solid;
     font-size: 120%;
-    background-color:rgba(227, 237, 255, 0.247);
+    background-color:rgba(149, 229, 240, 0.7);
     padding-bottom:8%;
     text-align: center;
     
@@ -95,6 +95,21 @@ h1 {
 } 
 
 .styleform input[type=submit]:hover{
+    background-color:darkblue;
+    color:white;
+
+} 
+
+.styleform input[type=button]{
+    background-color: white;
+    border: 1px solid darkblue;
+    padding:4px;
+    color: darkblue;
+    transition: all 0.5s ease;
+
+} 
+
+.styleform input[type=button]:hover{
     background-color:darkblue;
     color:white;
 

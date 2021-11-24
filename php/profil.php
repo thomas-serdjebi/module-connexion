@@ -262,25 +262,25 @@
                 <form action="profil.php" method="post" id="modif_utilisateurs" class="styleform">
                 
                 <div><label for="login">Login</label></div>
-                <div class="underform"><?php if (isset($err_login)) { echo $err_login ;}?></div><br>
+                <div class="underform"><?php if (isset($err_login)) { echo $err_login ;}?></div>
                 <div><input type="text" name="login" class="inputbasic" value="<?php echo $infos['login']; ?>"></div>
 
                 <br>
 
                 <div><label for="prenom">Prénom</label></div>
-                <div class="underform"><?php if (isset($err_prenom)) { echo $err_prenom ;} ?></div><br>
+                <div class="underform"><?php if (isset($err_prenom)) { echo $err_prenom ;} ?></div>
                 <div><input type="text" name="prenom" class="inputbasic" value="<?php echo $infos['prenom']; ?>"></div>
 
                 <br>
 
                 <div><label for="nom">Nom</label></div>
-                <div class="underform"><?php if (isset($err_nom)) { echo $err_nom ;} ?></div><br>
+                <div class="underform"><?php if (isset($err_nom)) { echo $err_nom ;} ?></div>
                 <div><input type="text" name="nom" class="inputbasic" value="<?php echo $infos['nom']; ?>"></div>
 
                 <br>
 
                 <div><label for="password">Confirmez vos modifications avec votre mot de passe.</label></div>
-                <div class="underform"><?php if (isset($err_password)) { echo $err_password;}?></div><br>
+                <div class="underform"><?php if (isset($err_password)) { echo $err_password;}?></div>
                 <div><input type="password" name="password" placeholder="password" class="inputbasic"></div>
 
                 <br>
