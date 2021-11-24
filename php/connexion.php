@@ -40,11 +40,26 @@
             else {
 
                 $_SESSION['login'] = $login ;
-                header ('Location: http://localhost/module-connexion/php/profil.php' );
 
                 $resultat = "Vous êtes connecté. ";
 
                 $afficherformulaire = 0;
+
+                if ($login ="admin") {
+
+                    header ('Location: http://localhost/module-connexion/php/admin.php' );
+
+                }
+
+                else  {
+
+                    header ('Location: http://localhost/module-connexion/php/profil.php' );
+                }
+
+
+                
+
+
 
             }  
         }
