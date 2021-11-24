@@ -9,7 +9,7 @@ main {
     margin: auto;
     border :darkblue 1px solid;
     font-size: 120%;
-    background-color:rgba(185, 207, 248, 0.3);
+    background-color:rgba(227, 237, 255, 0.247);
     padding-bottom:8%;
     text-align: center;
     
@@ -110,8 +110,9 @@ h1 {
 }
 
 .underform {
-    color: red;
+    color: rgb(250, 160, 24);
     font-weight:600;
     font-family: 'Exo 2';
+    font-size:23px;
 }
 
