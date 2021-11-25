@@ -10,17 +10,17 @@ session_start();
 
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="/module-connexion/style/mainforms.css">
-        <link rel="stylesheet" href="/module-connexion/style/header.css">
-        <link rel="stylesheet" href="/module-connexion/style/footer.css">
-        <link rel="stylesheet" href="/module-connexion/style/admin.css">
+            <link rel="stylesheet" href="../style/mainforms.css">
+            <link rel="stylesheet" href="../style/header.css">
+            <link rel="stylesheet" href="../style/footer.css">
+            <link rel="stylesheet" href="../style/admin.css">
         <title>Admin</title>
     </head>
 
     <body>
 
         <header>
-            <?php require('header.php'); ?> <!-- LINK AVEC LE HEADER -->
+            <?php require('header2.php'); ?> <!-- LINK AVEC LE HEADER -->
         </header>
 
         <main>
@@ -31,19 +31,32 @@ session_start();
             
             <section>
 
+                    <div id='erradmin'><?php if (isset($err_admin)) { echo $err_admin ;}?></div></br>
+                        
+
                 
 
                     <?php
 
 
                         if (!isset($_SESSION['login']))  {
-                            $err_admin="Seul l'administrateur peut accéder à cette page.";
-                        }
+                            $err_admin="Seul l'administrateur peut accéder à cette page.";?>
 
-                        elseif ($_SESSION['login'] != 'admin') {
-                            $err_admin="Seul l'administrateur peut accéder à cette page.";
+                            <div id='erradmin'><?php if (isset($err_admin)) { echo $err_admin ;}?></div></br>
+                            <a href='connexion.php'><input type='button' name='connexion' value='Connexion' class='inputbasic'></button>
 
-                        }
+                        <?php } 
+
+
+                            
+
+                        elseif ($_SESSION['login'] != 'admin') { 
+                            $err_admin="Seul l'administrateur peut accéder à cette page.";?>
+
+                            <div id='erradmin'><?php if (isset($err_admin)) { echo $err_admin ;}?></div></br>
+                            <a href='profil.php'><input type='button' name='profil' value='Retour au profil' class='inputbasic'></button>
+
+                        <?php } 
 
                         elseif (($_SESSION['login']) == 'admin') {
 
@@ -82,6 +95,10 @@ session_start();
                             }
 
                             echo"</table>" ;
+
+                            echo "<form action='admin.php' method='post' form='styleform'>
+                            <input type='submit' name='deconnexion' value='Se déconnecter' class='inputbasic'></button>
+                            </form>" ;
         
                         }
 
@@ -95,7 +112,7 @@ session_start();
 
                         session_destroy();
 
-                        header('Location: http://localhost/module-connexion/php/connexion.php');
+                        header('Location: connexion.php');
 
             
                     }
@@ -103,20 +120,12 @@ session_start();
                 ?>
 
 
-
-
-
             </section>
 
 
-            <section>
-                <div id="erradmin"><?php if (isset($err_admin)) { echo $err_admin ;}?></div></br>
-            
-            
-            
-            <form action='admin.php' method="post" form="styleform">
-            <button type="submit" name="deconnexion" value="Se déconnecter" class="inputbasic">Se déconnecter</button>
-            </form>
+
+
+
 
 
         </main>

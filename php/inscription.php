@@ -97,7 +97,7 @@
                         $suscribeok = "Félicitations, vous êtes inscrit avec succès!";
 
 
-                        header('Location: http://localhost/module-connexion/php/connexion.php');
+                       
                     }
     
 
@@ -127,16 +127,16 @@
 
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="/module-connexion/style/mainforms.css">
-        <link rel="stylesheet" href="/module-connexion/style/header.css">
-        <link rel="stylesheet" href="/module-connexion/style/footer.css">
+            <link rel="stylesheet" href="../style/mainforms.css">
+            <link rel="stylesheet" href="../style/header.css">
+            <link rel="stylesheet" href="../style/footer.css">
         <title>Inscription</title>
     </head>
 
     <body>
 
         <header>
-            <?php require('header.php'); ?> <!-- LINK AVEC LE HEADER -->
+            <?php require('header2.php'); ?> <!-- LINK AVEC LE HEADER -->
         </header>
 
         <main>
@@ -161,10 +161,19 @@
 
 
 
+
+
                 <?php 
                     if (isset($err_connexion)) { echo $err_connexion;}
                     if ($afficherformulaire == 1) { 
                 ?>
+
+                    <section class='underform'> <!-- INSCRIPTION REUSSIE  -->
+                <div>
+                    <?php 
+                        if (isset($suscribeok)) { echo $suscribeok  ;} 
+                    ?>
+                </div>
 
                         <form method="post" action="inscription.php" class="styleform">
                                 <div class="underform"><?php if(isset($err_login)) {echo $err_login ;}?></div>
@@ -184,7 +193,7 @@
                                 <br>
 
                                 <div class="reglesform"> Déjà inscrit ? Connectez vous ci dessous !<br>
-                                <a href="/module-connexion/php/connexion.php"><input type="button" class="inputbasic" value="Connexion"></a>
+                                <a href="connexion.php"><input type="button" class="inputbasic" value="Connexion"></a>
                                 </div>
 
                             
@@ -201,12 +210,7 @@
 
 
 
-            <section class='underform'> <!-- INSCRIPTION REUSSIE  -->
-                <div>
-                    <?php 
-                        if (isset($suscribeok)) { echo $suscribeok  ;} 
-                    ?>
-                </div>
+
 
             </section>
                 

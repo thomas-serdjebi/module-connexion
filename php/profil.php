@@ -19,7 +19,7 @@
 
         session_destroy();
 
-        header('Location: http://localhost/module-connexion/php/connexion.php');
+        header('Location: connexion.php');
     }
 
     require('connexiondb.php') ;
@@ -235,16 +235,17 @@
 
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="/module-connexion/style/mainforms.css">
-        <link rel="stylesheet" href="/module-connexion/style/header.css">
-        <link rel="stylesheet" href="/module-connexion/style/footer.css">
+            <link rel="stylesheet" href="../style/mainforms.css">
+            <link rel="stylesheet" href="../style/header.css">
+            <link rel="stylesheet" href="../style/footer.css">
+        
         <title>Profil</title>
     </head>
 
     <body>
 
         <header>
-            <?php require('header.php'); ?> <!-- LINK AVEC LE HEADER -->
+            <?php require('header2.php'); ?> <!-- LINK AVEC LE HEADER -->
         </header>
 
         <main>
@@ -286,12 +287,14 @@
                 <br>
                 <br>
 
-                <div><input type="submit" name="modifiermdp" value="Modifier le mot de passe" class="inputbasic"></div>
-                
-
                 <div><input type="submit" name="modifier" value="Enregistrer" class="inputbasic"></div>
 
-                <div><input type="submit" name="deconnexion" value="Se déconnecter" class="inputbasic"></div><br>
+                <div><input type="submit" name="modifiermdp" value="Modifier le mot de passe" class="inputbasic"></div><br>
+                
+
+                
+
+                <div><input type="submit" name="deconnexion" value="Se déconnecter" class="inputbasic"></div>
 
 
 
@@ -306,6 +309,7 @@
                 <form action="profil.php" method='post'>
                 <div class="underform"><?php if (isset($message)) {echo $message ;?></div></br>
                 <div><input type="submit" name="deconnexion" value="Se déconnecter" class="inputbasic"></div><br>
+                <div><a href="profil.php"><input type="button" name="retourprofil" value="Retour au profil" class="inputbasic"></div><br>
                 </form>
                 
                 <?php } ?>
@@ -315,12 +319,13 @@
             </section>
 
 
-            <div class="underform"><?php if (isset($messagemdp)) {echo $messagemdp ;} ?></div>
+            <div class="underform">
+                <?php if (isset($messagemdp)) {echo $messagemdp ;} ?>
+            </div>
 
             
 
-            <?php if ($formulairemdp == 1) {
-                ?>
+            <?php if ($formulairemdp == 1) { ?>
                 <form action="profil.php" method='post' class="styleform">
                     <div class="underform"><?php if (isset($err_actualpassword)) { echo $err_actualpassword;}?></div>
                     <div><input type="password" class="inputbasic" name="actualpassword" placeholder ="mot de passe actuel"></div>
@@ -348,8 +353,6 @@
                     <div><input type="submit" name="deconnexion" value="Se déconnecter" class="inputbasic"></div>
                 </form>
             <?php } ?>
-                
->
                 
   
 

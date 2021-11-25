@@ -6,11 +6,13 @@
 
         <div class=headerleftbox">
 
-            <div><a href="index.php"><img src="../assets/logoart.png" alt="logo" class="logoprojet"></a></div>
+            <div><a href="index.php"><img src="assets/logoart.png" alt="logo" class="logoprojet"></a></div>
 
         </div>
 
         <div class="headerrightbox">
+
+    
 
             <div class="lienspages"><a class="headerliens"  href="php/inscription.php">Inscription</a></div>
             <div class="lienspages"><a class="headerliens" href="php/connexion.php">Connexion</a></div>

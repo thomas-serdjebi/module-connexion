@@ -14,7 +14,7 @@
         
         // VERIF SI CHAMPS REMPLIS 
 
-        if (null ==! $login) {
+        if (empty($login)) {
             $err_login ="Veuillez renseigner votre login.";
             $validation = false;
         }
@@ -26,7 +26,7 @@
 
         // AUTHENTIFICATION
 
-        if(isset($login) && isset($password)) {
+        if(($login) && isset($password)) {
 
             $requete = mysqli_query($mysqli, "SELECT * FROM utilisateurs WHERE login = '".$login."' AND password = '".$password."'") ;
 
@@ -48,13 +48,13 @@
 
                 if (($_SESSION['login']) == 'admin' ) {
 
-                    header ('Location: http://localhost/module-connexion/php/admin.php' );
+                    header ('Location: admin.php' );
 
                 }
 
                 else  {
 
-                    header ('Location: http://localhost/module-connexion/php/profil.php' );
+                    header ('Location: profil.php' );
                 }
 
 
@@ -76,16 +76,17 @@
 
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="/module-connexion/style/mainforms.css">
-        <link rel="stylesheet" href="/module-connexion/style/header.css">
-        <link rel="stylesheet" href="/module-connexion/style/footer.css">
+        <link rel="stylesheet" href="../style/mainforms.css">
+        <link rel="stylesheet" href="../style/header.css">
+        <link rel="stylesheet" href="../style/footer.css">
+
         <title>Connexion</title>
     </head>
 
     <body>
 
         <header>
-            <?php require('header.php'); ?> <!-- LINK AVEC LE HEADER -->
+            <?php require('header2.php'); ?> <!-- LINK AVEC LE HEADER -->
         </header>
 
         <main>
@@ -111,7 +112,7 @@
                         <br>
 
                         <div class="reglesform"> Nouveau ici ? Inscrivez vous ci dessous !<br>
-                        <a href="/module-connexion/php/inscription.php"><input type="button" class="inputbasic" value="Inscription"></a>
+                        <a href="inscription.php"><input type="button" class="inputbasic" value="Inscription"></a>
                         </div>
 
                     </form>

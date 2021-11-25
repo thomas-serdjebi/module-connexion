@@ -6,9 +6,9 @@
 
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="/module-connexion/style/index.css">
-        <link rel="stylesheet" href="/module-connexion/style/header.css">
-        <link rel="stylesheet" href="/module-connexion/style/footer.css">
+        <link rel="stylesheet" href="./style/index.css">
+        <link rel="stylesheet" href="./style/header.css">
+        <link rel="stylesheet" href="./style/footer.css">
         <title>Accueil</title>
     </head>
 
@@ -17,7 +17,7 @@
         
 
         <header>
-            <?php require('php/header.php'); ?> <!-- LINK AVEC LE HEADER -->
+            <?php require('php/headerindex.php'); ?> <!-- LINK AVEC LE HEADER -->
         </header>
 
         <main>
@@ -35,10 +35,10 @@
 
                     <p>N'attendez plus et inscrivez vous !</p></br>
                     <p>
-                        Créez un compte dans l'onglet <a class="bodyliens" href="/module-connexion/php/inscription.php">Inscription</a>.</br>
-                        Accédez à votre compte dans l'onglet connexion <a class="bodyliens" href="/module-connexion/php/inscription.php">Connexion</a>.</br>
-                        Modifiez votre profil au besoin dans l'onglet <a class="bodyliens" href="/module-connexion/php/inscription.php">Profil</a>.</br>
-                        Si vous êtes administrateur, accédez à l'ensemble des informations utilisateurs dans l'onglet <a class="bodyliens" href="/module-connexion/php/admin.php">Admin</a>.</br>
+                        Créez un compte dans l'onglet <a class="bodyliens" href="php/inscription.php">Inscription</a>.</br>
+                        Accédez à votre compte dans l'onglet connexion <a class="bodyliens" href="php/inscription.php">Connexion</a>.</br>
+                        Modifiez votre profil au besoin dans l'onglet <a class="bodyliens" href="php/inscription.php">Profil</a>.</br>
+                        Si vous êtes administrateur, accédez à l'ensemble des informations utilisateurs dans l'onglet <a class="bodyliens" href="php/admin.php">Admin</a>.</br>
                     </p>
                 </div>
 
@@ -49,7 +49,7 @@
 
 
             
-        <?php require('php/footer.php'); ?> <!--LINK VERS LE FOOTER -->
+        <?php require('php/footerindex.php'); ?> <!--LINK VERS LE FOOTER -->
 
 
 
