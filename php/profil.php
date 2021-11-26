@@ -40,16 +40,18 @@
    $infos = mysqli_fetch_array($requete) ;
 
    
-       
-   
 
+   
     if (isset($_POST['modifier'])) {
-        $login= $_POST["login"];
+
+        $login = $_POST['login'];
         $prenom = $_POST['prenom'];
         $nom = $_POST['nom'];
-        $valid1 =(boolean) true;
+        $password = ($_POST['password']);
+        $valid1 = (boolean) true;
 
-        $testlogin = mysqli_query($mysqli, "SELECT * FROM utilisateurs WHERE login='".$login."'"); //
+
+        $testlogin = mysqli_query($mysqli, "SELECT * FROM utilisateurs WHERE login = '".$_SESSION['login']."' AND password = '".md5($password)."'") ;
 
         $mysqli_resultlogin = mysqli_num_rows($testlogin) ;
 
@@ -68,8 +70,6 @@
                 $valid1= false;
             }
         }
-
-
 
 
         elseif (!preg_match("#^[a-z0-9]+$#",$login)) {
@@ -109,7 +109,8 @@
 
         // TESTS DU MDP SI VIDE PUIS SI CORRECT POUR CONFIRMATION
 
-        $requetemdp = mysqli_query($mysqli, "SELECT * FROM utilisateurs WHERE password = '".md5($_POST['password'])."'") ; // REQUETE SQL SI MDP OK
+        $requetemdp = mysqli_query($mysqli, "SELECT * FROM utilisateurs WHERE login ='".$_SESSION['login']."' AND password = '".md5($password)."'") ;
+        ; // REQUETE SQL SI MDP OK
 
         $mysqli_resultmdp = mysqli_num_rows($requetemdp);  // COMPTE LE NOMBRE DE LIGNES CORRESPONDANTES
 
@@ -171,10 +172,10 @@
             $formulairemdp = 1;
             $formulaireinfos = 0; //CACHE FORMULAIRE INFO
             $actualpassword = $_POST['actualpassword'];
-            $newpassword = $_POST['newpassword'];
-            $confirmpassword = $_POST['confirmpassword'];
+            $newpassword = md5($_POST['newpassword']);
+            $confirmpassword = md5($_POST['confirmpassword']);
 
-            $requete = mysqli_query($mysqli, "SELECT * FROM utilisateurs WHERE password = '".md5($actualpassword)."'") ; // REQUETE TEST MDP ACTUEL
+            $requete = mysqli_query($mysqli, "SELECT * FROM utilisateurs WHERE password = '".md5($actualpassword)."' && login = '".$_SESSION['login']."'") ; // REQUETE TEST MDP ACTUEL
 
 
             $mysqli_result = mysqli_num_rows($requete); // comptage des ligne de résultat de requete
@@ -215,12 +216,20 @@
 
             if($valid2) {
                 
-                $modifmdp = mysqli_query($mysqli, "UPDATE utilisateurs SET password = '".md5($newpassword)."'");
+                $sql = "UPDATE utilisateurs SET password ='$newpassword'WHERE login = '".$_SESSION['login']."'";
 
+                if (mysqli_query($mysqli, $sql) ) {
+        
+                    $message = "Vos modifications ont été enregistrées avec succès!";
     
-                $messagemdp = "Votre mot de passe a été modifié avec succès !";
+                    $formulairemdp = 0;
+    
+    
                     
-                $formulaireinfos == 0;
+    
+                }
+
+                
                 
                     
             }

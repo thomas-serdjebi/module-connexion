@@ -7,10 +7,11 @@
     
     if(isset($_POST['connexion'])){
 
-        // SECURITE //
+        $validation = true;
+        $password = ($_POST['password']);
+        $login = $_POST['login'];
 
-        $login = mysqli_real_escape_string($mysqli,htmlspecialchars($_POST['login']));
-        $password = mysqli_real_escape_string($mysqli,htmlspecialchars(md5($_POST['password'])));
+
         
         // VERIF SI CHAMPS REMPLIS 
 
@@ -19,16 +20,17 @@
             $validation = false;
         }
 
-        if (null ==! (md5($password))) {
+        if (empty($password)){
+            echo "mot de passe vide";
             $err_password = "Veuillez renseigner votre mot de passe.";
             $validation = false;
         }
 
         // AUTHENTIFICATION
 
-        if(($login) && isset($password)) {
+        if ($validation == true) {
 
-            $requete = mysqli_query($mysqli, "SELECT * FROM utilisateurs WHERE login = '".$login."' AND password = '".$password."'") ;
+            $requete = mysqli_query($mysqli, "SELECT * FROM utilisateurs WHERE login = '".$login."' AND password = '".md5($password)."'") ;
 
             $mysqli_result = mysqli_num_rows($requete);
 
